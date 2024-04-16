@@ -122,7 +122,7 @@ public class SimpleFeature extends SourceFeature {
       return new OsmElement() {
         @Override
         public long id() {
-          return SimpleOsmFeature.this.id();
+          return id();
         }
 
         @Override
@@ -184,6 +184,11 @@ public class SimpleFeature extends SourceFeature {
     // we expect outer polygons to appear before inner ones, so process ones with larger areas first
     return worldGeometry != null ? worldGeometry :
       (worldGeometry = GeoUtils.sortPolygonsByAreaDescending(GeoUtils.latLonToWorldCoords(latLonGeometry)));
+  }
+
+  @Override
+  public long featureId() {
+    return id();
   }
 
   @Override

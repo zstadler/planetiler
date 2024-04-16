@@ -333,6 +333,9 @@ public abstract class SourceFeature implements WithTags, WithGeometryType {
     return id;
   }
 
+  /** Returns the ID for this element from the input data source (i.e. OSM element ID). */
+  public abstract long featureId();
+
 
   /** Returns true if this element has any OSM relation info. */
   public boolean hasRelationInfo() {

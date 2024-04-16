@@ -44,6 +44,12 @@ class OsmQaTilesTest {
       }
 
       @Override
+      public long featureId() {
+        int offset = originalElement().type().ordinal();
+        return (id() * 10) + offset;
+      }
+
+      @Override
       public boolean isPoint() {
         return true;
       }

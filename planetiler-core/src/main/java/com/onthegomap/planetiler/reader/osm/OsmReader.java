@@ -675,6 +675,12 @@ public class OsmReader implements Closeable, MemoryEstimator.HasEstimate {
     public OsmElement originalElement() {
       return originalElement;
     }
+
+    @Override
+    public long featureId() {
+      int offset = originalElement().type().ordinal();
+      return (id() * 10) + offset;
+    }
   }
 
   /** A {@link Point} created from an OSM node. */
