@@ -187,11 +187,6 @@ public class SimpleFeature extends SourceFeature {
   }
 
   @Override
-  public long featureId() {
-    return id();
-  }
-
-  @Override
   public Map<String, Object> tags() {
     return tags;
   }

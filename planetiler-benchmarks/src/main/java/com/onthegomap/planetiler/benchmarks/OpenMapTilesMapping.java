@@ -5,7 +5,6 @@ import com.onthegomap.planetiler.expression.MultiExpression;
 import com.onthegomap.planetiler.reader.SourceFeature;
 import com.onthegomap.planetiler.reader.osm.OsmElement;
 import com.onthegomap.planetiler.reader.osm.OsmInputFile;
-import com.onthegomap.planetiler.reader.osm.OsmReader;
 import com.onthegomap.planetiler.stats.ProgressLoggers;
 import com.onthegomap.planetiler.stats.Stats;
 import com.onthegomap.planetiler.util.Translations;
@@ -38,7 +37,7 @@ public class OpenMapTilesMapping {
             if (inputs.size() % 1_000_000 == 0) {
               logger.log();
             }
-            inputs.add(new SourceFeature(element.tags(), "", "", null, element.id()) {
+            inputs.add(new SourceFeature(element.tags(), "", "", null, element.featureId()) {
               @Override
               public Geometry latLonGeometry() {
                 return null;
@@ -47,12 +46,6 @@ public class OpenMapTilesMapping {
               @Override
               public Geometry worldGeometry() {
                 return null;
-              }
-
-              @Override
-              public long featureId() {
-                int offset = element.type().ordinal();
-                return (element.id() * 10) + offset;
               }
 
               @Override

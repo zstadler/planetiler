@@ -33,6 +33,12 @@ public interface OsmElement extends WithTags {
     RELATION
   }
 
+  /** Encode OSM element type in the feature id */
+  default long featureId() {
+    int offset = type().ordinal();
+    return (id() * 10) + offset;
+  }
+
   /** An un-handled element read from the .osm.pbf file (i.e. file header). */
   record Other(
     @Override long id,
