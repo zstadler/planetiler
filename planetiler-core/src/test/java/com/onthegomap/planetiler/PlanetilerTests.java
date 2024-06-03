@@ -54,7 +54,6 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -1227,28 +1226,28 @@ class PlanetilerTests {
   }
 
   @Test
-  @Disabled /* TODO: Fix failing test */
   void testPreprocessOsmNodesAndWays() throws Exception {
-    Set<Long> nodes1 = new HashSet<>();
+    HashMap<Long, Long> nodes1 = new HashMap<>();
     Set<Long> nodes2 = new HashSet<>();
     var profile = new Profile.NullProfile() {
       @Override
       public void preprocessOsmNode(OsmElement.Node node) {
         if (node.hasTag("a", "b")) {
-          nodes1.add(node.id());
+          nodes1.put(node.id(), node.featureId());
         }
       }
 
       @Override
       public void preprocessOsmWay(OsmElement.Way way) {
-        if (nodes1.contains(way.nodes().get(0))) {
-          nodes2.add(way.nodes().get(0));
+        Long featureId = nodes1.get(way.nodes().get(0));
+        if (featureId != null) {
+          nodes2.add(featureId);
         }
       }
 
       @Override
       public void processFeature(SourceFeature sourceFeature, FeatureCollector features) {
-        if (sourceFeature.isPoint() && nodes2.contains(sourceFeature.featureId())) {
+        if (sourceFeature.isPoint() && nodes2.contains(sourceFeature.id())) {
           features.point("start_nodes")
             .setMaxZoom(0);
         }
