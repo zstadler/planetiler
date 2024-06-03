@@ -951,7 +951,7 @@ class PlanetilerTests {
         feature(newPoint(128, 128), Map.of(
           "attr", "value",
           "name", "name value"
-        )).withId(1)
+        )).withId(11)
       )
     ), results.tiles);
   }
@@ -1040,7 +1040,7 @@ class PlanetilerTests {
         feature(newLineString(128, 128, 192, 192), Map.of(
           "attr", "value",
           "name", "name value"
-        )).withId(3)
+        )).withId(32)
       )
     ), results.tiles);
   }
@@ -1166,7 +1166,7 @@ class PlanetilerTests {
           "attr", "value",
           "name", "name value",
           "relname", "rel name"
-        )).withId(17)
+        )).withId(173)
       )
     ), results.tiles);
   }

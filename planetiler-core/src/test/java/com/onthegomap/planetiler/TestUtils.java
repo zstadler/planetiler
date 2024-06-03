@@ -279,7 +279,9 @@ public class TestUtils {
         case UNKNOWN -> throw new IllegalArgumentException("cannot decompress \"UNKNOWN\"");
       };
       var decoded = VectorTile.decode(bytes).stream()
-        .map(feature -> feature(decodeSilently(feature.geometry()), feature.layer(), feature.tags())).toList();
+        .map(feature -> feature(decodeSilently(feature.geometry()), feature.layer(),
+          feature.tags()).withId(feature.id()))
+        .toList();
       tiles.put(tile.coord(), decoded);
     }
     return tiles;

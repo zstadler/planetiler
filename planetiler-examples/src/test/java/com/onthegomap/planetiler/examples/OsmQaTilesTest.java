@@ -86,7 +86,6 @@ class OsmQaTilesTest {
   }
 
   @Test
-  @Disabled /* TODO: Fix failing test */
   void integrationTest(@TempDir Path tmpDir) throws Exception {
     Path dbPath = tmpDir.resolve("output.mbtiles");
     OsmQaTiles.run(Arguments.of(
@@ -109,7 +108,7 @@ class OsmQaTilesTest {
           "public_transport", "stop_position",
           "@type", "node",
           "@version", 4L,
-          "@id", 1699777833L
+          "@id", 16997778331L
         ), GeoUtils.WORLD_LAT_LON_BOUNDS, 1, Point.class);
       TestUtils
         .assertNumFeatures(mbtiles, "osm", 12, Map.of(
@@ -122,7 +121,7 @@ class OsmQaTilesTest {
           "wikidata", "Q45240",
           "@type", "relation",
           "@version", 9L,
-          "@id", 5986438L
+          "@id", 59864383L
         ), GeoUtils.WORLD_LAT_LON_BOUNDS, 1, Polygon.class);
       TestUtils
         .assertNumFeatures(mbtiles, "osm", 12, Map.of(
@@ -133,7 +132,7 @@ class OsmQaTilesTest {
           "lanes", "2",
           "@type", "way",
           "@version", 5L,
-          "@id", 166009791L
+          "@id", 1660097912L
         ), GeoUtils.WORLD_LAT_LON_BOUNDS, 1, LineString.class);
     }
   }
