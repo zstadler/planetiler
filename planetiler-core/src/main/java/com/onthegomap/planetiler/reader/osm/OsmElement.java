@@ -27,16 +27,21 @@ public interface OsmElement extends WithTags {
   Type type();
 
   enum Type {
-    OTHER,
-    NODE,
-    WAY,
-    RELATION
+    /** The specific numeric values, as returned by ordinal(),
+     * are used for encoding the OSM element type. */
+    OTHER,    // 0
+    NODE,     // 1
+    WAY,      // 2
+    RELATION  // 3
   }
 
-  /** Encode OSM element type in the feature id */
-  default long featureId() {
-    int offset = type().ordinal();
-    return (id() * 10) + offset;
+  /** Encode OSM element id and type in a feature id.
+   * The OSM element type is encoded in the least significant digit and
+   * the OSM element id is stored in the higher significance digits.
+   * */
+  default long featureIdFromElement() {
+    int encodedType = type().ordinal();
+    return (id() * 10) + encodedType;
   }
 
   /** An un-handled element read from the .osm.pbf file (i.e. file header). */

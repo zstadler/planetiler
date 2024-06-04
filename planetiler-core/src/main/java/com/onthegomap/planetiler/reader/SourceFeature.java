@@ -334,7 +334,7 @@ public abstract class SourceFeature implements WithTags, WithGeometryType {
   }
 
   /** By default, the feature id is taken as-is from the input data source id. */
-  public long featureId() {
+  public long featureIdFromElement() {
     return id;
   }
 

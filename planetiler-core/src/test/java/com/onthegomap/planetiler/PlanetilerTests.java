@@ -1233,7 +1233,7 @@ class PlanetilerTests {
       @Override
       public void preprocessOsmNode(OsmElement.Node node) {
         if (node.hasTag("a", "b")) {
-          nodes1.put(node.id(), node.featureId());
+          nodes1.put(node.id(), node.featureIdFromElement());
         }
       }
 
