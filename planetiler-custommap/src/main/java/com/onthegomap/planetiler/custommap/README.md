@@ -3,6 +3,7 @@
 ## ConfiguredMapMain class
 
 ### main()
+
 The program's `main` function when invoked in Custom Map / Configured Map mode.
 
 1. Creaate a Java object of the schema from file or use one of the builtin eample schemas
@@ -33,6 +34,7 @@ Parameters: schema and the context
 5. Create `featureLayerMatcher`
 
 ## processFeature()
+
 Overides the Profile's default
 
 Given a source feature
@@ -43,16 +45,20 @@ Given a source feature
    2. Execute `processFeature` for the feature using the post-match context
 
 ## postProcessLayerFeatures()
+
 Overides the Profile's default
 
 Given a layer name, a zoom, and a list of tile features
 Apply line merge and polygon merge post-processing, if applicable.
 
 # [ConfiguredFeature class](./ConfiguredProfile.java)
+
 A map feature, configured from a YML configuration file
 
-##  matchExpression()
+## matchExpression()
+
 Returns a filtering expression to limit input elements to ones this feature cares about
 
 ## processFeature()
+
 Processes matching elements
