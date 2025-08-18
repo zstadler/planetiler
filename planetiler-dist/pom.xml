@@ -21,7 +21,7 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <image.version>${project.version}</image.version>
-    <image>ghcr.io/onthegomap/planetiler:${image.version}</image>
+    <image>ghcr.io/zstadler/planetiler:${image.version}</image>
     <assembly-phase>package</assembly-phase>
     <jib.platform-arch>amd64</jib.platform-arch>
     <jib.platform-os>linux</jib.platform-os>
