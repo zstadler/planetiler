@@ -31,7 +31,7 @@ docker run -v "$(pwd)/data":/data ghcr.io/zstadler/planetiler:"${version}" --are
 ./scripts/check-monaco.sh data/docker-monaco.mbtiles
 echo "::endgroup::"
 echo "::group::Example (docker)"
-docker run -v "$(pwd)/data":/data ghcr.io/onthegomap/planetiler:"${version}" example-toilets --area=monaco --output=data/docker-example.mbtiles
+docker run -v "$(pwd)/data":/data ghcr.io/zstadler/planetiler:"${version}" example-toilets --area=monaco --output=data/docker-example.mbtiles
 ./scripts/check-mbtiles.sh data/docker-example.mbtiles
 echo "::endgroup::"
 
